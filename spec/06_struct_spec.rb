@@ -6,8 +6,8 @@
 # 
 # @see http://en.wikipedia.org/wiki/Batman
 
-Villian = Struct.new :name
-Superhero = Struct.new :name, :origin, :nemesis
+Villian = Struct.new :name, :nemesis
+Superhero = Struct.new :name, :origin, :nemesis, :alter_ego, :nick_name
 AlterEgo = Struct.new :name, :superhero
 
 describe Villian do
@@ -29,28 +29,24 @@ describe Villian do
   #
   # @see https://www.relishapp.com/rspec/rspec-core/docs/subject/explicit-subject
   #
-  subject { Villian.new "Joker" }
+  subject { Villian.new "Joker", batman }
   
   
   it "should have the correct name" do
-    
     subject.name.should == "Joker"
-    
   end
   
   
   describe "nemesis" do
 
     it "should respond_to? nemesis" do
-
       subject.should respond_to :nemesis
-
     end
     
+    its(:nemesis) { should == batman }
+    
     it "should have the correct nemesis" do
-      
       subject.nemesis.should == batman 
-      
     end
     
   end
@@ -77,30 +73,22 @@ describe Superhero do
   #
   # @see https://www.relishapp.com/rspec/rspec-core/docs/subject/explicit-subject
   #
-  subject { Superhero.new "Batman", "Gotham City", joker }
+  subject { Superhero.new "Batman", "Gotham City", joker, bruce_wayne, "The Caped Crusader"}
   
-  it "should have a name" do
-    subject.should respond_to :name
-  end
-  
+  it { should respond_to :name }
+
   it "should have the correct name" do
-    
     subject.name.should == "Batman"
-    
   end
   
   it "should have the correct origin" do
-    
     subject.origin.should == "Gotham City"
-    
   end
   
   describe "nemesis" do
     
     it "should have the correct name" do
-      
       subject.nemesis.name.should == "Joker"
-      
     end
     
   end
@@ -108,30 +96,20 @@ describe Superhero do
   
   describe "alter_ego" do
 
-    it "should respond_to? alter_ego" do
-
-      subject.should respond_to :alter_ego
-
-    end
+    it {should respond_to :alter_ego }
 
     it "should have an alter ego" do
-
       subject.alter_ego.should_not be_nil
-
     end
     
     it "should have the correct alter ego" do
-      
       subject.alter_ego.should == bruce_wayne
-      
     end
     
   end
   
   it "should have a nickname" do
-    
     subject.nick_name.should == "The Caped Crusader"
-    
   end
   
 end

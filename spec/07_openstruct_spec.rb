@@ -15,8 +15,12 @@ describe "Current Administration" do
     
     # Then you can assign any properties on the OpenStruct
     administration.president = "Barack Obama"
+    administration.first_lady = "Michelle Obama"
     
-    administration.vice_president = "Broseph Jiden"
+    administration.vice_president = "Joe Biden"
+    
+    cabinet = OpenStruct.new( {:state_department => "Hillary Clinton"} )
+    administration.cabinet = cabinet
     
     # This last line has `administration` so that it is returned as the subject
     administration
