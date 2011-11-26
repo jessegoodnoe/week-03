@@ -9,10 +9,15 @@ end
 
 desc "Run the sample Sinatra sample"
 task :sinatra do
-  system "bundle exec ruby lib/sinatra.rb"
+  system "bundle exec ruby sinatra.rb"
 end
 
 desc "Run the HighLine sample"
 task :highline do
   system "bundle exec ruby lib/highline.rb"
+end
+
+desc "Run the Create User app"
+task :create_user do
+  system "bundle exec ruby lib/create_user.rb"
 end

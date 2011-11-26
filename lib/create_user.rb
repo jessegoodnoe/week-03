@@ -13,7 +13,7 @@ HighLine.color_scheme = ft
 say "<%= color('Let us create a user!', :headline) %>"
 say("<%= color('-'*20, :horizontal_line) %>")
 
-email_address = ask("<%= color 'Email address?  ', :attribute %>", String)  { |q| q.validate = /\w+\@\w+.\w/}
+email_address = ask("<%= color('Email address?  ', :attribute) %>", String)  { |q| q.validate = /\w+\@\w+.\w/}
 full_name = ask("<%= color 'Name?  (last, first)  ', :attribute %>", String) { |q| q.validate = /\A\w+, ?\w+\Z/ }
 username = ask("<%= color 'UserName?  ', :attribute %>", String) { |q|
             q.default = email_address

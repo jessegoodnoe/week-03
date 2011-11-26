@@ -9,3 +9,4 @@ gem 'growl_notify'
 
 gem 'highline'
 gem 'sinatra'
+gem 'thin'
